@@ -44,7 +44,7 @@ spec:
   template:
     metadata:
       labels:
-        app: {{ .Values.spgwu.name }}
+        app: oai-enb-new
       annotations:
         k8s.v1.cni.cncf.io/networks: '[
                 { "name": "s1u-net", "interface": "s1u-net" }
