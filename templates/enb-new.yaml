@@ -18,10 +18,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: oai-enb
+  name: oai-enb-new
 spec:
   selector:
-    app: oai-enb
+    app: oai-enb-new
   clusterIp: None
   ports:
     - name: s1ap
@@ -32,15 +32,15 @@ spec:
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: oai-enb
+  name: oai-enb-new
   labels:
-    app: oai-enb
+    app: oai-enb-new
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: oai-enb
-  serviceName: oai-enb
+      app: oai-enb-new
+  serviceName: oai-enb-new
   template:
     metadata:
       labels:
@@ -63,7 +63,7 @@ spec:
       #  args:
       #  - iptables -I OUTPUT -p icmp --icmp-type destination-unreachable -j DROP;
       containers:
-      - name: oai-enb
+      - name: oai-enb-new
         image: {{ .Values.global.image }}
         imagePullPolicy: {{ .Values.global.imagepullpolicy }}
         stdin: true
